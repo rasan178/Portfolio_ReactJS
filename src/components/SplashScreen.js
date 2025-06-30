@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import '../styles/styles.css';
 
 function SplashScreen() {
   const [text, setText] = useState('');
@@ -13,7 +14,7 @@ function SplashScreen() {
       if (i < fullText.length) {
         setText(fullText.slice(0, i + 1));
         i++;
-        setTimeout(type, 150); // Slower typing for smoother effect
+        setTimeout(type, 150);
       }
     };
     type();
@@ -26,7 +27,7 @@ function SplashScreen() {
         'linear-gradient(135deg, #ec4899, #06b6d4)',
         'linear-gradient(135deg, #06b6d4, #1e3a8a)',
       ],
-      transition: { duration: 8, repeat: Infinity, repeatType: 'loop' }, // Increased duration
+      transition: { duration: 8, repeat: Infinity, repeatType: 'loop' },
     });
   }, [controls]);
 
@@ -36,7 +37,6 @@ function SplashScreen() {
       animate={controls}
       style={{ overflow: 'hidden' }}
     >
-      {/* Particle Effect */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -64,7 +64,7 @@ function SplashScreen() {
           className="text-6xl font-bold text-white mb-8 tracking-wider drop-shadow-lg"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: 'easeOut' }} // Increased duration
+          transition={{ duration: 1.5, ease: 'easeOut' }}
         >
           {text}
           <span className="animate-pulse text-cyan-400">|</span>
@@ -73,14 +73,14 @@ function SplashScreen() {
           className="w-20 h-20 border-4 border-t-transparent border-cyan-400 rounded-full mx-auto"
           initial={{ scale: 0, rotateX: 0 }}
           animate={{ scale: 1, rotateX: 360 }}
-          transition={{ duration: 2, delay: 0.7, ease: 'easeInOut' }} // Increased duration
+          transition={{ duration: 2, delay: 0.7, ease: 'easeInOut' }}
           style={{ transformStyle: 'preserve-3d' }}
         ></motion.div>
         <motion.p
           className="text-xl text-gray-200 mt-8 font-light"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 1.2, ease: 'easeOut' }} // Increased duration
+          transition={{ duration: 1.5, delay: 1.2, ease: 'easeOut' }}
         >
           Crafting an Immersive Digital Experience...
         </motion.p>

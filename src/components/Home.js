@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import '../styles/styles.css';
 
 function Home() {
   const [typedText, setTypedText] = useState('');
@@ -31,7 +32,7 @@ function Home() {
 
     const timer = setTimeout(type, isDeleting ? 100 : 150);
     return () => clearTimeout(timer);
-  }, [charIndex, isDeleting, roleIndex]);
+  }, [charIndex, isDeleting, roleIndex, roles]);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -50,7 +51,7 @@ function Home() {
             animate="visible"
           >
             <h1 className="text-5xl font-bold text-white mb-4">
-              Hi, I'm <span className="text-cyan-400">Rasan</span>
+              Hi, I'm <span className="text-cyan-400">Ashen</span>
             </h1>
             <h2 className="text-3xl font-semibold text-gray-300 mb-4">
               I'm a <span className="text-cyan-400">{typedText}</span>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import '../styles/styles.css';
 
 function About() {
   const fadeIn = {
@@ -34,32 +35,45 @@ function About() {
             />
           </motion.div>
           <motion.div
-            className="md:w-1/2 text-left"
+            className="md:w-1/2"
             variants={fadeIn}
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.3 }}
           >
-            <h2 className="text-3xl font-bold text-white mb-4">About Me</h2>
-            <p className="text-lg text-gray-300 max-w-md mb-6">
-              I'm a Software Engineering student with a keen interest in developing cutting-edge applications. My journey includes mastering both front-end and back-end technologies, with a focus on creating seamless user experiences.
-            </p>
-            <div className="space-y-3">
-              {details.map((detail, index) => (
-                <motion.div
-                  key={detail.label}
-                  className="flex items-center text-gray-300"
-                  variants={fadeIn}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                >
-                  <i className={`${detail.icon} text-cyan-400 mr-3 text-lg`}></i>
-                  <p>
-                    <strong>{detail.label}:</strong> {detail.value}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="about-container text-left p-6">
+              <h2 className="text-3xl font-bold text-white mb-4">About Me</h2>
+              <p className="text-lg text-gray-300 max-w-md mb-6">
+                I'm a Software Engineering student with a keen interest in developing cutting-edge applications. My journey includes mastering both front-end and back-end technologies, with a focus on creating seamless user experiences.
+              </p>
+              <div className="space-y-3">
+                {details.map((detail, index) => (
+                  <motion.div
+                    key={detail.label}
+                    className="flex items-center text-gray-300"
+                    variants={fadeIn}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    <i className={`${detail.icon} text-cyan-400 mr-3 text-lg`}></i>
+                    <p>
+                      <strong>{detail.label}:</strong> {detail.value}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+              <motion.a
+                href="/cv/rasan_samarakkody_cv.pdf"
+                download
+                className="btn btn-primary inline-flex items-center px-4 py-2 rounded-lg mt-6"
+                variants={fadeIn}
+                initial="hidden"
+                animate="visible"
+                transition={{ delay: 1.1 }}
+              >
+                <i className="fas fa-download mr-2"></i> Download CV
+              </motion.a>
             </div>
           </motion.div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Navbar from './components/Navbar';
+import './styles/styles.css';
 import SplashScreen from './components/SplashScreen';
+import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -18,7 +18,7 @@ function App() {
     try {
       const timer = setTimeout(() => {
         setLoading(false);
-      }, 5750); // Increased to 5 seconds to accommodate longer splash screen animations
+      }, 5000);
       return () => clearTimeout(timer);
     } catch (error) {
       console.error('Error in splash screen transition:', error);
