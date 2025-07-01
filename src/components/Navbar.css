@@ -1,0 +1,72 @@
+/* Navbar.css */
+nav {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav .container {
+  max-width: 1200px;
+}
+
+nav a {
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #06b6d4;
+}
+
+nav ul {
+  transition: all 0.3s ease;
+}
+
+nav .md\\:flex {
+  display: flex;
+  align-items: center;
+}
+
+nav .md\\:static.absolute {
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+nav button i {
+  transition: all 0.3s ease;
+}
+
+nav button:hover i {
+  color: #06b6d4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  nav .md\\:static.absolute {
+    top: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  nav .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  nav h1 {
+    font-size: 1.5rem;
+  }
+}

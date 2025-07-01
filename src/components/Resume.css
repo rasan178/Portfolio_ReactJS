@@ -1,0 +1,97 @@
+/* Resume.css */
+#resume {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.resume-card {
+  background: rgba(45, 55, 72, 0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.resume-text {
+  background: rgba(45, 55, 72, 0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume-text:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+#resume h2 {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+#resume h3 {
+  font-family: 'Inter', sans-serif;
+}
+
+#resume p {
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #resume {
+    padding: 2rem 1rem;
+  }
+
+  #resume h2 {
+    font-size: 2rem;
+  }
+
+  #resume h3 {
+    font-size: 1.5rem;
+    text-align: center !important;
+  }
+
+  #resume .resume-card,
+  #resume .resume-text {
+    padding: 1.5rem;
+  }
+
+  #resume .flex-col.md\\:flex-row {
+    flex-direction: column;
+  }
+
+  #resume .resume-text p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  #resume h2 {
+    font-size: 1.75rem;
+  }
+
+  #resume h3 {
+    font-size: 1.25rem;
+  }
+
+  #resume p {
+    font-size: 0.9rem;
+  }
+
+  #resume .resume-card,
+  #resume .resume-text {
+    padding: 1rem;
+  }
+}

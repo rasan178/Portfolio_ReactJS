@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './styles/styles.css';
 import SplashScreen from './components/SplashScreen';
 import Navbar from './components/Navbar';
 import Home from './components/Home';

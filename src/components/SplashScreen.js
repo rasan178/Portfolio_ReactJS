@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import '../styles/styles.css';
+import './SplashScreen.css';
 
 function SplashScreen() {
   const [text, setText] = useState('');
@@ -33,7 +33,7 @@ function SplashScreen() {
 
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 backdrop-filter backdrop-blur-xl border border-gray-500 border-opacity-20"
+      className="splash-screen fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-70 backdrop-filter backdrop-blur-xl border border-gray-500 border-opacity-20"
       animate={controls}
       style={{ overflow: 'hidden' }}
     >

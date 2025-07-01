@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import '../styles/styles.css';
+import './Skills.css';
 
 function Skills() {
   const skillCategories = [
@@ -100,6 +100,12 @@ function Skills() {
         >
           <i className="fas fa-chevron-left"></i>
         </button>
+        <button
+          onClick={scrollRight}
+          className="carousel-btn carousel-btn-right absolute right-0 top-1/2 transform -translate-y-1/2"
+        >
+          <i className="fas fa-chevron-right"></i>
+        </button>
         <div
           className="carousel-container overflow-x-auto snap-x snap-mandatory flex space-x-4 px-4"
           ref={carouselRef}
@@ -137,12 +143,6 @@ function Skills() {
             </motion.div>
           ))}
         </div>
-        <button
-          onClick={scrollRight}
-          className="carousel-btn carousel-btn-right absolute right-0 top-1/2 transform -translate-y-1/2"
-        >
-          <i className="fas fa-chevron-right"></i>
-        </button>
       </div>
     </section>
   );

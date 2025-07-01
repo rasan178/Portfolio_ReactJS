@@ -1,4 +1,5 @@
 import React from 'react';
+import './Projects.css';
 
 function Projects() {
   const projects = [
@@ -9,7 +10,7 @@ function Projects() {
       link: 'https://github.com/yourusername/ecommerce-platform'
     },
     {
-     title: 'AI Chatbot',
+      title: 'AI Chatbot',
       description: 'A research project on conversational AI using Python and TensorFlow, designed to handle natural language queries with high accuracy.',
       image: 'https://images.unsplash.com/photo-1516321310762-6d2a40e94973',
       link: 'https://github.com/yourusername/ai-chatbot'
@@ -23,7 +24,7 @@ function Projects() {
     {
       title: 'Task Management App',
       description: 'A mobile-friendly task management application developed with React Native, featuring real-time collaboration and cloud syncing.',
-      image: 'https://images.unsplash.com/photo-151632lük1497487-e288fb19713f',
+      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f',
       link: 'https://github.com/yourusername/task-app'
     }
   ];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../styles/styles.css';
+import './Footer.css';
 
 function Footer() {
   const quickLinks = [
