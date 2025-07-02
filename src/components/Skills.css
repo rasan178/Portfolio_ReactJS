@@ -65,13 +65,33 @@
   font-size: 1.25rem;
 }
 
+#skills h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: 2.5rem;
+}
+
 #skills h2 {
   font-family: 'Inter', sans-serif;
+  font-weight: 600;
   letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-size: 2rem;
 }
 
 #skills h3 {
   font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
 }
 
 /* Responsive adjustments */
@@ -94,8 +114,16 @@
     padding: 2rem 1rem;
   }
 
+  #skills h1 {
+    font-size: 2.25rem;
+  }
+
   #skills h2 {
     font-size: 1.75rem;
+  }
+
+  #skills h3 {
+    font-size: 1.25rem;
   }
 
   .skill-card {
@@ -105,8 +133,16 @@
 }
 
 @media (max-width: 640px) {
+  #skills h1 {
+    font-size: 2rem;
+  }
+
   #skills h2 {
     font-size: 1.5rem;
+  }
+
+  #skills h3 {
+    font-size: 1.125rem;
   }
 
   .skill-card {

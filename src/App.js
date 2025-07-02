@@ -17,7 +17,7 @@ function App() {
     try {
       const timer = setTimeout(() => {
         setLoading(false);
-      }, 5000);
+      }, 6000);
       return () => clearTimeout(timer);
     } catch (error) {
       console.error('Error in splash screen transition:', error);

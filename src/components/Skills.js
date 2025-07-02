@@ -8,49 +8,48 @@ function Skills() {
       name: 'Front End',
       icon: 'fas fa-code',
       skills: [
-        { name: 'React', level: 90 },
-        { name: 'HTML', level: 95 },
-        { name: 'CSS', level: 90 },
-        { name: 'JavaScript', level: 85 },
-        { name: 'Dart', level: 80 },
-        { name: 'Java', level: 75 },
+        { name: 'React', level: 90, icon: 'fab fa-react' },
+        { name: 'HTML', level: 95, icon: 'fab fa-html5' },
+        { name: 'CSS', level: 90, icon: 'fab fa-css3-alt' },
+        { name: 'JavaScript', level: 85, icon: 'fab fa-js' },
+        { name: 'Dart', level: 80, icon: 'fas fa-code' },
+        { name: 'Java', level: 75, icon: 'fab fa-java' },
       ],
     },
     {
       name: 'Back End',
       icon: 'fas fa-server',
       skills: [
-        { name: 'Node.js', level: 80 },
-        { name: 'Express', level: 75 },
-        { name: 'MongoDB', level: 70 },
-        { name: 'Php', level: 70 },
-        { name: 'SQL', level: 65 },
-        { name: 'Firebase', level: 75 },
+        { name: 'Node.js', level: 80, icon: 'fab fa-node' },
+        { name: 'Python', level: 75, icon: 'fab fa-python' },
+        { name: 'Php', level: 70, icon: 'fab fa-php' },
+        { name: 'SQL', level: 65, icon: 'fas fa-database' },
+        { name: 'Firebase', level: 75, icon: 'fas fa-fire' },
       ],
     },
     {
       name: 'Design',
       icon: 'fas fa-paint-brush',
       skills: [
-        { name: 'Figma', level: 85 },
-        { name: 'Adobe XD', level: 80 },
-        { name: 'UI/UX Principles', level: 75 },
+        { name: 'Figma', level: 85, icon: 'fab fa-figma' },
+        { name: 'Adobe XD', level: 80, icon: 'fas fa-pen-ruler' },
+        { name: 'Photoshop', level: 75, icon: 'fas fa-image' },
       ],
     },
     {
       name: 'Editing',
       icon: 'fas fa-video',
       skills: [
-        { name: 'Adobe Premiere', level: 70 },
-        { name: 'Photoshop', level: 75 },
+        { name: 'Adobe Premiere', level: 70, icon: 'fas fa-video' },
+        { name: 'CapCut', level: 75, icon: 'fas fa-cut' },
       ],
     },
     {
       name: 'Version Control',
       icon: 'fas fa-code-branch',
       skills: [
-        { name: 'Git', level: 85 },
-        { name: 'GitHub', level: 80 },
+        { name: 'Git', level: 85, icon: 'fab fa-git' },
+        { name: 'GitHub', level: 80, icon: 'fab fa-github' },
       ],
     },
   ];
@@ -125,6 +124,7 @@ function Skills() {
                 {category.skills.map((skill) => (
                   <div key={skill.name} className="flex flex-col">
                     <div className="flex items-center">
+                      <i className={`${skill.icon} text-cyan-400 text-lg mr-2`}></i>
                       <span className="text-gray-300">{skill.name}</span>
                       <span className="level-number ml-auto text-[10px] -translate-y-1">{skill.level}%</span>
                     </div>

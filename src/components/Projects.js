@@ -7,26 +7,14 @@ function Projects() {
       title: 'E-Commerce Platform',
       description: 'A full-stack web application built with React, Node.js, and MongoDB, featuring user authentication, product management, and payment integration.',
       image: 'https://images.unsplash.com/photo-1558655146-d09347e92766',
-      link: 'https://github.com/yourusername/ecommerce-platform'
-    },
-    {
-      title: 'AI Chatbot',
-      description: 'A research project on conversational AI using Python and TensorFlow, designed to handle natural language queries with high accuracy.',
-      image: 'https://images.unsplash.com/photo-1516321310762-6d2a40e94973',
-      link: 'https://github.com/yourusername/ai-chatbot'
+      link: 'https://rasan178.github.io/FreshMart-Html-Javascript-Firebase/'
     },
     {
       title: 'Portfolio Website',
       description: 'A futuristic single-page portfolio built with React and Tailwind CSS, showcasing advanced UI/UX with smooth animations and hover effects.',
       image: 'https://images.unsplash.com/photo-1498050108023-c5241f4a3d63',
-      link: 'https://github.com/yourusername/portfolio'
+      link: 'https://portfolio-react-js-psi-sepia.vercel.app/'
     },
-    {
-      title: 'Task Management App',
-      description: 'A mobile-friendly task management application developed with React Native, featuring real-time collaboration and cloud syncing.',
-      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f',
-      link: 'https://github.com/yourusername/task-app'
-    }
   ];
 
   return (
