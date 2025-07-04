@@ -113,7 +113,7 @@ function Services() {
               <p className="text-gray-200 text-sm">{selectedService.details}</p>
             </div>
             <button
-              className="btn-close absolute bottom-4 right-4 bg-gradient-to-r from-cyan-500 to-cyan-700 text-white px-5 py-2 rounded-lg shadow-md"
+              className="btn-close"
               onClick={() => setSelectedService(null)}
             >
               Back

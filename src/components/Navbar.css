@@ -1,17 +1,36 @@
 /* Navbar.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=Roboto:wght@400;500&display=swap');
+
 nav {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 100;
 }
 
 nav .container {
   max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  color: #ffffff;
 }
 
 nav a {
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 500;
+  color: #d1d5db;
   transition: color 0.3s ease;
 }
 
@@ -19,22 +38,37 @@ nav a:hover {
   color: #06b6d4;
 }
 
-nav ul {
+nav ul.nav-flex {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   transition: all 0.3s ease;
 }
 
-nav .md\\:flex {
-  display: flex;
-  align-items: center;
-}
-
-nav .md\\:static.absolute {
+nav .mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
   background: rgba(31, 41, 55, 0.95);
   backdrop-filter: blur(10px);
+  padding: 1rem;
+  z-index: 99;
+}
+
+nav button {
+  display: none;
+  background: none;
+  border: none;
+  color: #d1d5db;
+  font-size: 1.5rem;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 nav button i {
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 nav button:hover i {
@@ -42,31 +76,93 @@ nav button:hover i {
 }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  nav .container {
+    padding: 1rem 1.25rem;
+  }
+
+  nav ul.nav-flex {
+    gap: 1rem;
+  }
+
+  nav a {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 768px) {
-  nav ul {
-    display: flex;
+  nav {
+    backdrop-filter: none; /* Disable backdrop-filter for performance */
+  }
+
+  nav .container {
+    padding: 0.75rem 1rem;
+  }
+
+  nav h1 {
+    font-size: 1.5rem;
+  }
+
+  nav ul.nav-flex {
+    display: none; /* Hide desktop menu by default on mobile */
+  }
+
+  nav ul.nav-flex.active {
+    display: flex; /* Show menu when active (toggled via JS) */
     flex-direction: column;
     align-items: center;
+  }
+
+  nav .mobile-menu {
+    display: block; /* Enable mobile menu container */
+  }
+
+  nav .mobile-menu.active {
+    display: block; /* Show mobile menu when active */
   }
 
   nav li {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
   }
 
-  nav .md\\:static.absolute {
+  nav .mobile-menu {
     top: 4rem;
+  }
+
+  nav button {
+    display: block; /* Show hamburger menu button */
+  }
+
+  nav a {
+    font-size: 0.95rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   nav .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   nav h1 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  nav li {
+    padding: 0.5rem 0;
+  }
+
+  nav button {
+    font-size: 1.25rem;
+  }
+
+  nav .mobile-menu {
+    padding: 0.75rem;
+    top: 3.5rem;
   }
 }

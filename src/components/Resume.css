@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 6rem 1rem 2rem; /* Increased padding-top to clear navbar */
   position: relative;
   overflow: hidden;
 }
@@ -38,6 +38,7 @@
 #resume h2 {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  font-size: 2.5rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #ffffff;
@@ -48,6 +49,7 @@
 #resume h3 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
+  font-size: 1.75rem;
   letter-spacing: 0.02em;
   color: #ffffff;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
@@ -73,6 +75,7 @@
 #resume p {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
+  font-size: 1rem;
   line-height: 1.8;
   letter-spacing: 0.01em;
   color: #d1d5db;
@@ -100,6 +103,8 @@
   position: relative;
   z-index: 1;
   padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .resume-card:hover {
@@ -113,18 +118,34 @@
   color: #06b6d4;
 }
 
+.resume-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  #resume {
+    padding: 5rem 1rem 2rem; /* Adjusted padding-top for navbar */
+  }
+
+  .resume-card {
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   #resume {
-    padding: 2.5rem 1.5rem;
+    padding: 4.5rem 1rem 2rem; /* Adjusted padding-top for navbar */
   }
 
   #resume h2 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
   #resume h3 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   #resume h4 {
@@ -140,21 +161,26 @@
   }
 
   .resume-card {
-    padding: 1.5rem;
+    padding: 1.25rem;
+    backdrop-filter: none; /* Disable backdrop-filter for performance */
   }
 
-  #resume .flex-col.md\\:flex-row {
+  .resume-flex {
     flex-direction: column;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
+  #resume {
+    padding: 4rem 0.75rem 1.5rem; /* Adjusted padding-top for navbar */
+  }
+
   #resume h2 {
     font-size: 2rem;
   }
 
   #resume h3 {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 
   #resume h4 {
@@ -167,9 +193,14 @@
 
   #resume p {
     font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .resume-card {
-    padding: 1.25rem;
+    padding: 1rem;
+  }
+
+  .resume-flex {
+    gap: 1.5rem;
   }
 }

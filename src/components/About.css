@@ -56,6 +56,8 @@
   position: relative;
   z-index: 1;
   max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .about-container {
@@ -65,6 +67,7 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2.5rem;
 }
 
 .about-container:hover {
@@ -79,6 +82,7 @@
   color: #ffffff;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .about-subtitle {
@@ -109,7 +113,7 @@
 .detail-card {
   background: rgba(45, 55, 72, 0.5);
   border-radius: 8px;
-  padding: 0.75rem;
+  padding: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -148,7 +152,7 @@
 }
 
 .skill-badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: rgba(6, 182, 212, 0.2);
   color: #d1d5db;
@@ -156,6 +160,7 @@
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
   border-radius: 6px;
+  margin: 0.25rem;
   transition: all 0.3s ease;
 }
 
@@ -169,6 +174,7 @@
 .skill-badge i {
   color: #06b6d4;
   font-size: 1rem;
+  margin-right: 0.5rem;
   transition: color 0.3s ease;
 }
 
@@ -186,6 +192,7 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  touch-action: manipulation; /* Improves touch responsiveness */
 }
 
 .btn-primary:hover {
@@ -204,6 +211,7 @@
 
 .social-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   gap: 1rem;
 }
@@ -220,6 +228,7 @@
   font-size: 1.25rem;
   position: relative;
   transition: all 0.3s ease;
+  touch-action: manipulation; /* Improves touch responsiveness */
 }
 
 .social-icon:hover {
@@ -237,7 +246,7 @@
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   position: absolute;
-  top: -2rem;
+  top: -2.5rem;
   white-space: nowrap;
   opacity: 0;
   transition: all 0.3s ease;
@@ -281,8 +290,9 @@
 }
 
 .about-image {
-  width: 256px;
-  height: 256px;
+  width: 100%;
+  max-width: 256px;
+  height: auto;
   border-radius: 8px;
   object-fit: cover;
   object-position: center 20%;
@@ -310,7 +320,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   #about {
     padding: 3rem 1.5rem;
   }
@@ -320,7 +330,25 @@
   }
 
   .about-title {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
+  }
+
+  .about-image {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  #about {
+    padding: 2.5rem 1rem;
+  }
+
+  .about-container {
+    padding: 1.5rem;
+  }
+
+  .about-title {
+    font-size: 2.25rem;
   }
 
   .about-subtitle {
@@ -338,8 +366,7 @@
   }
 
   .about-image {
-    width: 200px;
-    height: 200px;
+    max-width: 180px;
   }
 
   .social-icon {
@@ -347,11 +374,27 @@
     height: 36px;
     font-size: 1.1rem;
   }
+
+  .btn-primary {
+    padding: 0.75rem 1.75rem;
+  }
+
+  .particle {
+    display: none; /* Disable particles on smaller screens for performance */
+  }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
+  #about {
+    padding: 2rem 0.75rem;
+  }
+
+  .about-container {
+    padding: 1.25rem;
+  }
+
   .about-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .about-subtitle {
@@ -366,21 +409,29 @@
   .about-detail,
   .skill-badge {
     font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .about-image {
-    width: 160px;
-    height: 160px;
+    max-width: 140px;
   }
 
   .btn-primary {
-    font-size: 0.95rem;
-    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
   }
 
   .social-icon {
     width: 32px;
     height: 32px;
     font-size: 1rem;
+  }
+
+  .social-links {
+    gap: 0.75rem;
+  }
+
+  .detail-card {
+    padding: 0.75rem;
   }
 }

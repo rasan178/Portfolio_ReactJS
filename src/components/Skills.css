@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 2rem 0.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -26,14 +26,15 @@
 
 #skills .carousel-wrapper {
   position: relative;
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
   z-index: 1;
 }
 
 .carousel-container {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  touch-action: pan-x; /* Enable horizontal touch scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .carousel-container::-webkit-scrollbar {
@@ -42,22 +43,26 @@
 
 .skill-card {
   background: rgba(45, 55, 72, 0.85);
-  border-radius: 16px;
+  border-radius: 12px;
   backdrop-filter: blur(15px);
-  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
-  width: 250px;
-  height: 450px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  width: 75vw; /* Relative to viewport width */
+  max-width: 280px; /* Cap for larger screens */
+  min-width: 180px; /* Minimum width for small screens */
+  height: auto;
+  min-height: 340px; /* Increased from 300px for mobile view */
   flex-shrink: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 1.25rem; /* Slightly increased padding for content breathing room */
 }
 
 .skill-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.3);
 }
 
 .level-bar {
@@ -65,14 +70,14 @@
 }
 
 .text-level-bar {
-  color: #06b6d4; /* Matches level bar gradient start */
+  color: #06b6d4;
 }
 
 .carousel-btn {
   background: rgba(45, 55, 72, 0.9);
   color: #06b6d4;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -89,7 +94,7 @@
 }
 
 .carousel-btn i {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 #skills h2 {
@@ -99,13 +104,13 @@
   text-transform: uppercase;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-  font-size: 2.75rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
 }
 
 #skills p {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   letter-spacing: 0.02em;
 }
 
@@ -115,23 +120,82 @@
   letter-spacing: 0.02em;
   color: #ffffff;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.25rem);
 }
 
 #skills .text-gray-300 {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
 }
 
 #skills .level-number {
-  font-size: 0.75rem;
+  font-size: clamp(0.6rem, 2vw, 0.7rem);
+}
+
+.skill-card .space-y-2 > div {
+  margin-bottom: 0.75rem; /* Increased spacing between skill items */
 }
 
 /* Responsive adjustments */
-@media (max-width: 1024px) {
+@media (min-width: 640px) {
+  .skill-card {
+    width: 260px;
+    min-height: 360px;
+    padding: 1.5rem;
+  }
+
+  .skill-card .space-y-2 > div {
+    margin-bottom: 0.875rem;
+  }
+
   .carousel-container {
-    padding: 0 2.5rem;
+    padding: 0 1rem;
+  }
+
+  .carousel-btn-left {
+    left: 0.5rem;
+  }
+
+  .carousel-btn-right {
+    right: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #skills {
+    padding: 3rem 1rem;
+  }
+
+  .skill-card {
+    width: 280px;
+    min-height: 400px;
+    padding: 1.75rem;
+  }
+
+  .skill-card .space-y-2 > div {
+    margin-bottom: 1rem;
+  }
+
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .carousel-btn i {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skill-card {
+    width: 300px;
+    min-height: 450px;
+    padding: 2rem;
+  }
+
+  .carousel-container {
+    padding: 0 1.5rem;
   }
 
   .carousel-btn-left {
@@ -140,66 +204,5 @@
 
   .carousel-btn-right {
     right: 0.75rem;
-  }
-
-  .skill-card {
-    width: 230px;
-    height: 420px;
-  }
-}
-
-@media (max-width: 768px) {
-  #skills {
-    padding: 2.5rem 1.5rem;
-  }
-
-  #skills h2 {
-    font-size: 2.25rem;
-  }
-
-  #skills p {
-    font-size: 1.1rem;
-  }
-
-  #skills h3 {
-    font-size: 1.25rem;
-  }
-
-  .skill-card {
-    padding: 1.25rem;
-    width: 210px;
-    height: 390px;
-  }
-}
-
-@media (max-width: 640px) {
-  #skills h2 {
-    font-size: 2rem;
-  }
-
-  #skills p {
-    font-size: 1rem;
-  }
-
-  #skills h3 {
-    font-size: 1.125rem;
-  }
-
-  .skill-card {
-    padding: 1rem;
-    width: 190px;
-    height: 360px;
-  }
-
-  .skill-card h3 {
-    font-size: 1.25rem;
-  }
-
-  .skill-card p {
-    font-size: 0.875rem;
-  }
-
-  .level-number {
-    font-size: 0.7rem;
   }
 }

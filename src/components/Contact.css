@@ -38,6 +38,8 @@
   position: relative;
   z-index: 1;
   max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .contact-title {
@@ -48,6 +50,7 @@
   text-transform: uppercase;
   color: #ffffff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  line-height: 1.2;
 }
 
 .contact-subtitle {
@@ -64,6 +67,7 @@
   box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
 }
 
 .contact-card:hover {
@@ -103,6 +107,14 @@
   border-radius: 50%;
   background: rgba(6, 182, 212, 0.2);
   color: #06b6d4;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  touch-action: manipulation;
+}
+
+.contact-info-item:hover .contact-info-icon {
+  background: rgba(6, 182, 212, 0.4);
+  color: #22d3ee;
 }
 
 .contact-info-title {
@@ -130,6 +142,7 @@
 
 .social-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
 }
@@ -143,7 +156,9 @@
   border-radius: 50%;
   background: rgba(6, 182, 212, 0.2);
   color: #06b6d4;
+  font-size: 1.25rem;
   transition: all 0.3s ease;
+  touch-action: manipulation;
 }
 
 .social-icon:hover {
@@ -162,12 +177,16 @@
   font-size: 0.95rem;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  width: 100%;
   transition: all 0.3s ease;
 }
 
 .form-control:focus {
   border-color: #06b6d4;
   box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+  outline: none;
 }
 
 .form-label {
@@ -198,6 +217,10 @@
   font-size: 1rem;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+  touch-action: manipulation;
 }
 
 .contact-button:hover {
@@ -215,18 +238,35 @@
   font-family: 'Roboto', sans-serif;
   font-size: 0.95rem;
   text-align: center;
+  color: #d1d5db;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
+  #contact {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .contact-container {
+    padding: 0 1rem;
+  }
+
   .contact-info {
     max-width: 100%;
+  }
+
+  .contact-title {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
   #contact {
-    padding: 2.5rem 1rem;
+    padding: 2rem 1rem;
+  }
+
+  .contact-card {
+    padding: 1.5rem;
   }
 
   .contact-title {
@@ -237,31 +277,14 @@
     font-size: 1rem;
   }
 
-  .contact-card {
-    padding: 1.5rem;
-  }
-
   .contact-info-item {
     padding: 0.75rem;
   }
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .contact-title {
-    font-size: 2rem;
-  }
-
-  .contact-subtitle {
-    font-size: 0.9rem;
-  }
-
   .contact-info-icon {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
   }
 
   .contact-info-title {
@@ -269,16 +292,88 @@
   }
 
   .contact-info-text {
+    font-size: 0.9rem;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #contact {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .contact-card {
+    padding: 1.25rem;
+  }
+
+  .contact-title {
+    font-size: 1.75rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .contact-info-item {
+    padding: 0.5rem;
+  }
+
+  .contact-info-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .contact-info-title {
+    font-size: 0.95rem;
+  }
+
+  .contact-info-text {
     font-size: 0.85rem;
+    line-height: 1.6;
   }
 
   .social-icon {
     width: 36px;
     height: 36px;
+    font-size: 1rem;
+  }
+
+  .social-links {
+    gap: 0.75rem;
+  }
+
+  .form-control {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+  }
+
+  .form-control:focus + .form-label,
+  .form-control:not(:placeholder-shown) + .form-label {
+    font-size: 0.7rem;
+    top: -0.6rem;
+    left: 0.6rem;
   }
 
   .contact-button {
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .form-message {
+    font-size: 0.85rem;
   }
 }
