@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import './Home.css';
 
 function Home() {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -100px 0px' });
+
   const [typedText, setTypedText] = useState('');
-  const roles = ['Software Engineer', 'Web Developer', 'Innovator'];
+  const roles = ['Software Engineer', 'Web Developer', 'Innovator', 'Problem Solver'];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -25,67 +28,106 @@ function Home() {
           setTypedText(currentRole.slice(0, charIndex + 1));
           setCharIndex(charIndex + 1);
         } else {
-          setTimeout(() => setIsDeleting(true), 1000);
+          setTimeout(() => setIsDeleting(true), 1200);
         }
       }
     };
 
-    const timer = setTimeout(type, isDeleting ? 100 : 150);
+    const timer = setTimeout(type, isDeleting ? 80 : 120);
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, roleIndex, roles]);
 
   const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
   };
 
+  const socialLinks = [
+    { name: 'GitHub', href: 'https://github.com/rasan178', icon: 'fab fa-github' },
+    { name: 'LinkedIn', href: 'https://linkedin.com/in/your-profile', icon: 'fab fa-linkedin' },
+    { name: 'Facebook', href: 'https://facebook.com/your-profile', icon: 'fab fa-facebook' },
+    { name: 'Instagram', href: 'https://instagram.com/your-profile', icon: 'fab fa-instagram' },
+  ];
+
   return (
-    <section id="home" className="py-16 relative">
+    <section id="home" className="relative" ref={ref}>
       <div className="hero-gradient"></div>
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center">
+      <div className="particle particle-1"></div>
+      <div className="particle particle-2"></div>
+      <div className="particle particle-3"></div>
+      <div className="particle particle-4"></div>
+      <div className="container mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between">
           <motion.div
-            className="md:w-1/2 text-left mb-8 md:mb-0"
+            className="lg:w-1/2 text-left mb-12 lg:mb-0"
             variants={fadeIn}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? 'visible' : 'hidden'}
           >
-            <h1 className="text-5xl font-bold text-white mb-4">
-              Hi, I'm <span className="text-cyan-400">Rasan</span>
-            </h1>
-            <h2 className="text-3xl font-semibold text-gray-300 mb-4">
-              I'm a <span className="text-cyan-400">{typedText}</span>
-              <span className="animate-pulse">|</span>
-            </h2>
-            <p className="text-lg text-gray-300 max-w-md mb-6">
-              Passionate about creating innovative solutions and turning complex problems into elegant, efficient code.
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="#contact"
-                className="btn btn-primary inline-flex items-center px-4 py-2 rounded-lg bg-cyan-500 text-white hover:bg-cyan-600 transition-colors duration-300 transform hover:scale-105"
-              >
-                <i className="fas fa-envelope mr-2"></i> Get In Touch
-              </a>
-              <a
-                href="#projects"
-                className="btn btn-outline inline-flex items-center px-4 py-2 rounded-lg border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white transition-colors duration-300 transform hover:scale-105"
-              >
-                <i className="fas fa-folder-open mr-2"></i> View My Work
-              </a>
+            <div className="hero-card">
+              <h1 className="hero-heading text-3xl lg:text-4xl font-bold mb-2">
+                Hi, I'm
+              </h1>
+              <h1 className="hero-name text-3xl lg:text-4xl font-bold mb-2">
+                Rasan Samarakkody
+              </h1>
+              <h2 className="text-xl lg:text-2xl font-semibold mb-6">
+                <span className="hero-subheading">I'm a</span>
+                <span className="hero-typed"> {typedText}</span>
+                <span className="animate-pulse">|</span>
+              </h2>
+              <p className="hero-body text-lg lg:text-xl max-w-lg mb-8">
+                Passionate about crafting innovative solutions, transforming complex challenges into elegant, efficient code, and delivering seamless user experiences.
+              </p>
+              <div className="flex gap-4 flex-wrap mb-6">
+                <a
+                  href="#contact"
+                  className="btn btn-primary inline-flex items-center justify-center"
+                  aria-label="Get in touch with Rasan Samarakkody"
+                >
+                  <i className="fas fa-envelope mr-2"></i> Get In Touch
+                </a>
+                <a
+                  href="#projects"
+                  className="btn btn-outline inline-flex items-center justify-center"
+                  aria-label="View Rasan Samarakkody's projects"
+                >
+                  <i className="fas fa-folder-open mr-2"></i> View My Work
+                </a>
+              </div>
+              <div className="social-links flex gap-2">
+                {socialLinks.map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon"
+                    variants={fadeIn}
+                    initial="hidden"
+                    animate={isInView ? 'visible' : 'hidden'}
+                    transition={{ delay: 0.6 + socialLinks.indexOf(link) * 0.1 }}
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    aria-label={link.name}
+                  >
+                    <i className={link.icon}></i>
+                    <span className="tooltip">{link.name}</span>
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
           <motion.div
-            className="md:w-1/2 flex justify-center"
+            className="lg:w-1/2 flex justify-center"
             variants={fadeIn}
             initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.3 }}
+            animate={isInView ? 'visible' : 'hidden'}
+            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
           >
             <img
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
-              alt="Ashen"
-              className="w-64 h-64 rounded-full object-cover transform hover:scale-110 transition-transform duration-300 shadow-lg"
+              alt="Profile picture of Rasan Samarakkody"
+              className="profile-img"
             />
           </motion.div>
         </div>

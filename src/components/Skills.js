@@ -32,7 +32,7 @@ function Skills() {
       icon: 'fas fa-paint-brush',
       skills: [
         { name: 'Figma', level: 85, icon: 'fab fa-figma' },
-        { name: 'Adobe XD', level: 80, icon: 'fas fa-pen-ruler' },
+        { name: 'Adobe XD', level: 80, icon: 'fab fa-pen-ruler' },
         { name: 'Photoshop', level: 75, icon: 'fas fa-image' },
       ],
     },
@@ -58,7 +58,7 @@ function Skills() {
 
   useEffect(() => {
     const carousel = carouselRef.current;
-    const cardWidth = 300 + 16; // Card width (300px) + gap (16px from space-x-4)
+    const cardWidth = 250 + 16; // Card width (250px) + gap (16px from space-x-4)
     const middleIndex = 2; // Index of Design card (third card, 0-based)
     const initialScroll = middleIndex * cardWidth - window.innerWidth / 2 + cardWidth / 2;
 
@@ -68,30 +68,46 @@ function Skills() {
 
   const scrollLeft = () => {
     const carousel = carouselRef.current;
-    carousel.scrollBy({ left: -(300 + 16), behavior: 'smooth' });
+    carousel.scrollBy({ left: -(250 + 16), behavior: 'smooth' });
   };
 
   const scrollRight = () => {
     const carousel = carouselRef.current;
-    carousel.scrollBy({ left: 300 + 16, behavior: 'smooth' });
+    carousel.scrollBy({ left: 250 + 16, behavior: 'smooth' });
   };
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
   };
 
   const barAnimation = {
     hidden: { width: 0 },
     visible: (level) => ({
       width: `${level}%`,
-      transition: { duration: 1, ease: 'easeOut' },
+      transition: { duration: 1.5, ease: 'easeOut', delay: 0.5 },
     }),
   };
 
   return (
     <section id="skills" className="py-16">
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">Skills</h2>
+      <motion.h2
+        className="text-4xl font-bold text-white mb-4 text-center"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+      >
+        Skills
+      </motion.h2>
+      <motion.p
+        className="text-lg text-gray-300 max-w-2xl mx-auto mb-8 text-center"
+        variants={fadeIn}
+        initial="hidden"
+        animate="visible"
+        transition={{ delay: 0.2 }}
+      >
+        A showcase of my technical expertise and creative capabilities
+      </motion.p>
       <div className="carousel-wrapper max-w-6xl mx-auto relative">
         <button
           onClick={scrollLeft}
@@ -118,19 +134,19 @@ function Skills() {
               animate="visible"
               transition={{ delay: index * 0.2 }}
             >
-              <i className={`${category.icon} text-cyan-400 text-4xl mb-4 mx-auto block`}></i>
-              <h3 className="text-xl font-semibold text-white mb-4 text-center">{category.name}</h3>
+              <i className={`${category.icon} text-white text-4xl mb-3 mx-auto block`}></i>
+              <h3 className="text-xl font-semibold text-white mb-3 text-center">{category.name}</h3>
               <div className="space-y-3">
                 {category.skills.map((skill) => (
                   <div key={skill.name} className="flex flex-col">
                     <div className="flex items-center">
-                      <i className={`${skill.icon} text-cyan-400 text-lg mr-2`}></i>
-                      <span className="text-gray-300">{skill.name}</span>
-                      <span className="level-number ml-auto text-[10px] -translate-y-1">{skill.level}%</span>
+                      <i className={`${skill.icon} text-level-bar text-base mr-2`}></i>
+                      <span className="text-gray-300 text-base">{skill.name}</span>
+                      <span className="level-number ml-auto text-[10px] text-gray-300">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2.5 mt-1 relative">
+                    <div className="w-full bg-gray-800 rounded-full h-2 mt-1 relative overflow-hidden">
                       <motion.div
-                        className="level-bar h-2.5 rounded-full"
+                        className="level-bar h-2 rounded-full"
                         variants={barAnimation}
                         initial="hidden"
                         animate="visible"

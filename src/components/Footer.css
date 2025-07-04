@@ -1,64 +1,433 @@
 /* Footer.css */
-footer {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap');
+
+.footer {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(to right, rgba(6, 182, 212, 0), #06b6d4, rgba(6, 182, 212, 0)) 1;
+  backdrop-filter: blur(15px);
+  padding: 4rem 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-footer a {
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 20%, rgba(6, 182, 212, 0.15), transparent 70%);
+  z-index: 0;
+}
+
+.footer::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, rgba(6, 182, 212, 0.1), transparent);
+  z-index: 0;
+}
+
+@keyframes borderGlow {
+  0% {
+    border-image: linear-gradient(to right, rgba(6, 182, 212, 0), #06b6d4, rgba(6, 182, 212, 0)) 1;
+  }
+  50% {
+    border-image: linear-gradient(to right, rgba(6, 182, 212, 0), #22d3ee, rgba(6, 182, 212, 0)) 1;
+  }
+  100% {
+    border-image: linear-gradient(to right, rgba(6, 182, 212, 0), #06b6d4, rgba(6, 182, 212, 0)) 1;
+  }
+}
+
+.footer {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+.footer-container {
+  max-width: 1200px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-card {
+  background: linear-gradient(145deg, rgba(45, 55, 72, 0.85), rgba(30, 41, 59, 0.9));
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  padding: 1.5rem;
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3), 0 0 12px rgba(6, 182, 212, 0.2);
+}
+
+.footer-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  margin-bottom: 1.5rem;
+}
+
+.footer-text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #d1d5db;
+}
+
+.footer-text a {
+  color: #d1d5db;
+  position: relative;
   transition: color 0.3s ease;
 }
 
-footer a:hover {
+.footer-text a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #06b6d4;
+  transition: width 0.3s ease;
+}
+
+.footer-text a:hover {
   color: #06b6d4;
 }
 
-footer .container {
-  max-width: 1200px;
+.footer-text a:hover::after {
+  width: 100%;
 }
 
-footer h3 {
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.05em;
-}
-
-footer p, footer li {
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-footer .flex.space-x-4 {
+.footer-link {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #d1d5db;
+  position: relative;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
-footer .text-gray-300 {
+.footer-link a {
+  color: #d1d5db;
+  position: relative;
   transition: color 0.3s ease;
+}
+
+.footer-link a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #06b6d4;
+  transition: width 0.3s ease;
+}
+
+.footer-link a:hover {
+  color: #06b6d4;
+}
+
+.footer-link a:hover::after {
+  width: 100%;
+}
+
+.footer-link i {
+  color: #06b6d4;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link a:hover i {
+  color: #22d3ee;
+}
+
+.social-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.25rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.2);
+  color: #06b6d4;
+  font-size: 1.75rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: rgba(6, 182, 212, 0.4);
+  color: #22d3ee;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
+.social-icon .tooltip {
+  visibility: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  color: #ffffff;
+  background: rgba(30, 41, 59, 0.9);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  position: absolute;
+  top: -2rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-control {
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #06b6d4;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.form-control:disabled {
+  background: rgba(75, 94, 109, 0.5);
+  cursor: not-allowed;
+}
+
+.form-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  color: #d1d5db;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus + .form-label,
+.form-control:not(:placeholder-shown) + .form-label {
+  top: -0.75rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  color: #06b6d4;
+  background: rgba(30, 41, 59, 0.9);
+  padding: 0 0.25rem;
+}
+
+.newsletter-button {
+  background: #06b6d4;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+  background: #0891b2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.newsletter-button:disabled {
+  background: #4b5e6d;
+  cursor: not-allowed;
+}
+
+.form-message {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #d1d5db;
+}
+
+.last-updated {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: transparent;
+  color: #06b6d4;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.back-to-top:hover {
+  background: #0891b2;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.progress-ring {
+  position: absolute;
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  stroke: #4b5e6d;
+}
+
+.progress-ring-progress {
+  transition: stroke-dashoffset 0.3s ease;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  footer .grid {
-    gap: 2rem;
+  .footer {
+    padding: 3rem 1.5rem;
+  }
+
+  .footer-container {
+    gap: 3rem;
     text-align: center;
   }
 
-  footer .flex.space-x-4 {
+  .footer-card {
+    padding: 1.25rem;
+  }
+
+  .footer-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-text,
+  .footer-link {
+    font-size: 0.95rem;
+  }
+
+  .social-links {
     justify-content: center;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-group {
+    min-width: 100%;
+  }
+
+  .back-to-top {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
   }
 }
 
 @media (max-width: 640px) {
-  footer {
-    padding: 2rem 1rem;
-  }
-
-  footer h3 {
+  .footer-title {
     font-size: 1.25rem;
   }
 
-  footer p, footer li {
-    font-size: 0.85rem;
+  .footer-text,
+  .footer-link {
+    font-size: 0.9rem;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .newsletter-button {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .back-to-top {
+    width: 36px;
+    height: 36px;
+  }
+
+  .progress-ring {
+    width: 36px;
+    height: 36px;
+  }
+
+  .progress-ring-circle,
+  .progress-ring-progress {
+    r: 16;
+    cx: 18;
+    cy: 18;
+    stroke-width: 3;
+  }
+
+  .progress-ring-progress {
+    stroke-dasharray: 100.5;
   }
 }

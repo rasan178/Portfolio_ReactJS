@@ -1,51 +1,139 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Projects.css';
 
 function Projects() {
+  const [category, setCategory] = useState('all');
+
   const projects = [
     {
       title: 'E-Commerce Platform',
-      description: 'A full-stack web application built with React, Node.js, and MongoDB, featuring user authentication, product management, and payment integration.',
-      image: 'https://images.unsplash.com/photo-1558655146-d09347e92766',
-      link: 'https://rasan178.github.io/FreshMart-Html-Javascript-Firebase/'
+      description: 'A web application built with HTML, CSS, and Firebase, featuring a responsive UI and secure user authentication for an online shopping experience.',
+      image: 'https://supplychainbeyond.com/wp-content/uploads/2019/07/ecommerce-online-grocery-logistics.jpg',
+      languages: ['HTML', 'CSS', 'Firebase'],
+      github: 'https://github.com/rasan178/FreshMart-Html-Javascript-Firebase',
+      livePreview: 'https://rasan178.github.io/FreshMart-Html-Javascript-Firebase/',
+      category: 'full-stack',
     },
     {
       title: 'Portfolio Website',
-      description: 'A futuristic single-page portfolio built with React and Tailwind CSS, showcasing advanced UI/UX with smooth animations and hover effects.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5241f4a3d63',
-      link: 'https://portfolio-react-js-psi-sepia.vercel.app/'
+      description: 'A futuristic single-page portfolio built with React and CSS, showcasing advanced UI/UX with smooth animations and hover effects.',
+      image: 'https://static.vecteezy.com/system/resources/previews/013/228/102/non_2x/software-developer-2d-isolated-illustration-computer-programmer-flat-character-on-cartoon-background-learning-coding-colourful-editable-scene-for-mobile-website-presentation-vector.jpg',
+      languages: ['React', 'CSS'],
+      github: 'https://github.com/rasan178/Portfolio_ReactJS',
+      livePreview: 'https://portfolio-react-js-psi-sepia.vercel.app/',
+      category: 'ui-ux',
     },
   ];
 
+  const filteredProjects = category === 'all'
+    ? projects
+    : projects.filter(project => project.category === category);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+  };
+
   return (
     <section id="projects" className="py-16">
-      <h2 className="text-3xl font-bold text-white mb-8">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="relative p-6 bg-gray-800 bg-opacity-50 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 hover:shadow-xl"
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-              onError={(e) => { e.target.src = 'https://via.placeholder.com/300'; }}
-            />
-            <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-            <p className="text-gray-300 mt-2">{project.description}</p>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 text-blue-400 hover:text-blue-600 transition-colors duration-300"
-            >
-              View Project <i className="fas fa-external-link-alt ml-2"></i>
-            </a>
-            <div className="absolute inset-0 border-2 border-transparent hover:border-blue-500 rounded-lg transition-all duration-300"></div>
-          </div>
-        ))}
+      <motion.h2
+        className="text-3xl font-bold text-white mb-2 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        Projects
+      </motion.h2>
+      <motion.p
+        className="text-lg text-gray-300 mb-4 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        Explore my recent work and contributions
+      </motion.p>
+      <div className="toggle-container">
+        <button
+          className={`toggle-btn ${category === 'all' ? 'active' : ''}`}
+          onClick={() => setCategory('all')}
+        >
+          All
+        </button>
+        <button
+          className={`toggle-btn ${category === 'full-stack' ? 'active' : ''}`}
+          onClick={() => setCategory('full-stack')}
+        >
+          Full Stack Solutions
+        </button>
+        <button
+          className={`toggle-btn ${category === 'ui-ux' ? 'active' : ''}`}
+          onClick={() => setCategory('ui-ux')}
+        >
+          UI/UX Designs
+        </button>
       </div>
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+        layout
+      >
+        <AnimatePresence>
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              className="project-card relative"
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              layout
+            >
+              <div className="card-inner">
+                <div className="card-front">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="card-image"
+                    onError={(e) => { e.target.src = 'https://via.placeholder.com/300'; }}
+                  />
+                  <h3 className="card-title">{project.title}</h3>
+                  <div className="card-languages">
+                    {project.languages.map((lang, i) => (
+                      <span key={i} className="language-tag">{lang}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="card-back">
+                  <p className="card-description">{project.description}</p>
+                  <div className="card-buttons">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-github"
+                    >
+                      View on GitHub
+                      <i className="fab fa-github ml-2"></i>
+                    </a>
+                    {project.livePreview && (
+                      <a
+                        href={project.livePreview}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-preview"
+                      >
+                        Live Preview
+                        <i className="fas fa-external-link-alt ml-2"></i>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 }
