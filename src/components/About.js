@@ -71,7 +71,7 @@ function About() {
           >
             <div className="image-container">
               <img
-                src="https://picsum.photos/256"
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
                 alt="Rasan Samarakkody"
                 className="about-image loaded"
                 style={{ zIndex: 1, position: 'relative' }} 

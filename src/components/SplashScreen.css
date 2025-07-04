@@ -1,49 +1,99 @@
-.splash-screen{
-  margin: 0;
-  padding: 0;
-  background-color: #0f0f0f;
-  color: #00ff99;
-  font-family: 'Courier New', monospace;
-  height: 100%;
-}
+/* SplashScreen.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
 
 .splash-screen {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: radial-gradient(circle, #101010, #000000);
-}
-
-.terminal-box {
-  background: #000;
-  border: 2px solid #00ff99;
-  padding: 2rem;
-  width: 80%;
-  max-width: 800px;
-  box-shadow: 0 0 30px #00ff99;
-  border-radius: 10px;
+  min-height: 100vh;
+  background: radial-gradient(circle, #1a202c, #0f0f0f);
+  position: relative;
   overflow: hidden;
 }
 
+.particle {
+  position: absolute;
+  background: rgba(6, 182, 212, 0.3);
+  border-radius: 50%;
+  z-index: 0;
+  animation: particleAnimation 5s infinite;
+}
+
+.particle-1 { width: 10px; height: 10px; top: 10%; left: 15%; }
+.particle-2 { width: 8px; height: 8px; top: 30%; left: 70%; animation-delay: 1s; }
+.particle-3 { width: 12px; height: 12px; top: 60%; left: 25%; animation-delay: 2s; }
+.particle-4 { width: 6px; height: 6px; top: 80%; left: 50%; animation-delay: 0.5s; }
+
+@keyframes particleAnimation {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(-15px); opacity: 0.8; }
+}
+
+.icon {
+  position: absolute;
+  color: #06b6d4;
+  font-size: 2rem;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.terminal-box {
+  background: linear-gradient(145deg, rgba(45, 55, 72, 0.85), rgba(30, 41, 59, 0.9));
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
 .terminal-line {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  color: #d1d5db;
   line-height: 1.6;
   white-space: pre-wrap;
 }
 
 .enter-btn {
   margin-top: 1.5rem;
-  background-color: #00ff99;
-  color: #000;
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  color: #ffffff;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
   padding: 0.5rem 1rem;
   display: inline-block;
   cursor: pointer;
-  font-weight: bold;
   border-radius: 5px;
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.3s ease;
 }
 
-.enter-btn:hover {
+.enter-btn:hover, .enter-btn:focus {
+  background: linear-gradient(90deg, #0891b2, #2563eb);
   transform: scale(1.1);
-  background-color: #00e68a;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.enter-btn:focus {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .terminal-box { width: 95%; padding: 1rem; }
+  .terminal-line { font-size: 0.9rem; }
+  .enter-btn { font-size: 0.9rem; padding: 0.4rem 0.8rem; }
+  .icon { font-size: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .terminal-box { width: 100%; }
+  .terminal-line { font-size: 0.85rem; }
+  .enter-btn { font-size: 0.85rem; }
+  .icon { font-size: 1.2rem; }
 }
