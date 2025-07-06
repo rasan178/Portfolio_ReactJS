@@ -57,9 +57,25 @@ function Home() {
       <div className="particle particle-3"></div>
       <div className="particle particle-4"></div>
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center justify-between">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          {/* Profile Image - Shows first on mobile, second on desktop */}
           <motion.div
-            className="lg:w-1/2 text-left mb-12 lg:mb-0"
+            className="lg:w-1/2 flex justify-center order-1 lg:order-2"
+            variants={fadeIn}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
+              alt="Profile picture of Rasan Samarakkody"
+              className="profile-img"
+            />
+          </motion.div>
+          
+          {/* Hero Card - Shows second on mobile, first on desktop */}
+          <motion.div
+            className="lg:w-1/2 text-left order-2 lg:order-1"
             variants={fadeIn}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
@@ -116,19 +132,6 @@ function Home() {
                 ))}
               </div>
             </div>
-          </motion.div>
-          <motion.div
-            className="lg:w-1/2 flex justify-center"
-            variants={fadeIn}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
-              alt="Profile picture of Rasan Samarakkody"
-              className="profile-img"
-            />
           </motion.div>
         </div>
       </div>
