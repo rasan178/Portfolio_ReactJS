@@ -71,7 +71,7 @@ function About() {
           >
             <div className="image-container">
               <img
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
+                src="https://github.com/rasan178/Images/blob/master/ChatGPT%20Image%20Jul%202,%202025,%2012_58_18%20PM.png?raw=true"
                 alt="Rasan Samarakkody"
                 className="about-image loaded"
                 style={{ zIndex: 1, position: 'relative' }} 

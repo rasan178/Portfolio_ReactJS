@@ -67,7 +67,7 @@ function Home() {
             transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
           >
             <img
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"
+              src="https://github.com/rasan178/Images/blob/master/ChatGPT%20Image%20Jul%202,%202025,%2012_58_18%20PM.png?raw=true"
               alt="Profile picture of Rasan Samarakkody"
               className="profile-img"
             />
