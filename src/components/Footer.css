@@ -327,8 +327,9 @@
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  z-index: 10;
-  touch-action: manipulation;
+  z-index: 1000;
+  touch-action: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .back-to-top:hover {
@@ -339,24 +340,24 @@
 
 .progress-ring {
   position: absolute;
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  height: 100%;
   transform: rotate(-90deg);
 }
 
 .progress-ring-circle {
   stroke: #4b5e6d;
   r: 20;
-  cx: 24;
-  cy: 24;
+  cx: 50%;
+  cy: 50%;
   stroke-width: 4;
 }
 
 .progress-ring-progress {
   stroke: #06b6d4;
   r: 20;
-  cx: 24;
-  cy: 24;
+  cx: 50%;
+  cy: 50%;
   stroke-width: 4;
   stroke-dasharray: 125.6;
   transition: stroke-dashoffset 0.3s ease;
@@ -425,10 +426,28 @@
   }
 
   .back-to-top {
-    bottom: 1rem;
-    right: 1rem;
-    width: 40px;
-    height: 40px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    animation: none;
+  }
+
+  .progress-ring {
+    width: 48px;
+    height: 48px;
+  }
+
+  .progress-ring-circle,
+  .progress-ring-progress {
+    r: 20;
+    cx: 24;
+    cy: 24;
+    stroke-width: 4;
+  }
+
+  .progress-ring-progress {
+    stroke-dasharray: 125.6;
   }
 }
 
@@ -497,24 +516,26 @@
   }
 
   .back-to-top {
-    width: 36px;
-    height: 36px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
   }
 
   .progress-ring {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
 
   .progress-ring-circle,
   .progress-ring-progress {
-    r: 16;
-    cx: 18;
-    cy: 18;
-    stroke-width: 3;
+    r: 18;
+    cx: 22;
+    cy: 22;
+    stroke-width: 3.5;
   }
 
   .progress-ring-progress {
-    stroke-dasharray: 100.5;
+    stroke-dasharray: 113.1;
   }
 }

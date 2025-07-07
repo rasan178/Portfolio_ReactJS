@@ -194,7 +194,6 @@ function Footer() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          Last Updated: July 4, 2025
         </motion.p>
       </motion.div>
       <motion.button

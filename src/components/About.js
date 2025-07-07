@@ -12,6 +12,21 @@ function About() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
   };
 
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      transition: { 
+        duration: 0.8, 
+        ease: 'easeOut',
+        type: 'spring',
+        stiffness: 120,
+        damping: 15,
+      } 
+    },
+  };
+
   const details = [
     { label: 'Name', value: 'Rasan Samarakkody', icon: 'fas fa-user' },
     { label: 'Age', value: '24', icon: 'fas fa-birthday-cake' },
@@ -22,10 +37,10 @@ function About() {
   ];
 
   const skills = [
-    { name: 'React', icon: 'fab fa-react' },
-    { name: 'Node.js', icon: 'fab fa-node-js' },
-    { name: 'AI', icon: 'fas fa-brain' },
-    { name: 'Cloud', icon: 'fas fa-cloud' },
+    { name: 'React', icon: 'fab fa-react', tooltip: 'Frontend Framework' },
+    { name: 'Node.js', icon: 'fab fa-node-js', tooltip: 'Backend Runtime' },
+    { name: 'AI', icon: 'fas fa-brain', tooltip: 'Machine Learning' },
+    { name: 'Cloud', icon: 'fas fa-cloud', tooltip: 'Cloud Computing' },
   ];
 
   const socialLinks = [
@@ -64,18 +79,22 @@ function About() {
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
           <motion.div
             className="md:w-1/3 flex justify-center mb-8 md:mb-0"
-            variants={fadeIn}
+            variants={imageVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.4 }}
           >
             <div className="image-container">
               <img
                 src="https://github.com/rasan178/Images/blob/master/ChatGPT_Image_Jul_7__2025__05_00_45_PM-removebg-preview.png?raw=true"
                 alt="Rasan Samarakkody"
-                className="about-image loaded"
-                style={{ zIndex: 1, position: 'relative' }} 
+                className="about-image"
+                tabIndex={0}
+                aria-label="Profile picture of Rasan Samarakkody"
               />
+              <div className="neural-line neural-line-1"></div>
+              <div className="neural-line neural-line-2"></div>
+              <div className="neural-line neural-line-3"></div>
+              <div className="neural-line neural-line-4"></div>
             </div>
           </motion.div>
           <motion.div
@@ -127,7 +146,7 @@ function About() {
                     >
                       <i className={`${skill.icon} mr-2`}></i>
                       {skill.name}
-                      <span className="tooltip">{skill.name}</span>
+                      <span className="tooltip">{skill.tooltip}</span>
                     </motion.div>
                   ))}
                 </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 import './Home.css';
 
 function Home() {
@@ -11,6 +11,29 @@ function Home() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Tilt effect state
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const springConfig = { stiffness: 100, damping: 20 };
+  const x = useSpring(0, springConfig);
+  const y = useSpring(0, springConfig);
+  const rotateX = useTransform(y, [-0.5, 0.5], [10, -10]);
+  const rotateY = useTransform(x, [-0.5, 0.5], [-10, 10]);
+
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const xPos = (event.clientX - rect.left) / rect.width - 0.5;
+    const yPos = (event.clientY - rect.top) / rect.height - 0.5;
+    setMousePosition({ x: xPos, y: yPos });
+    x.set(xPos);
+    y.set(yPos);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    setMousePosition({ x: 0, y: 0 });
+  };
 
   useEffect(() => {
     const type = () => {
@@ -42,6 +65,21 @@ function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
   };
 
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      transition: { 
+        duration: 0.8, 
+        ease: 'easeOut',
+        type: 'spring',
+        stiffness: 120,
+        damping: 15,
+      } 
+    },
+  };
+
   const socialLinks = [
     { name: 'GitHub', href: 'https://github.com/rasan178', icon: 'fab fa-github' },
     { name: 'LinkedIn', href: 'https://linkedin.com/in/your-profile', icon: 'fab fa-linkedin' },
@@ -61,16 +99,26 @@ function Home() {
           {/* Profile Image - Shows first on mobile, second on desktop */}
           <motion.div
             className="lg:w-1/2 flex justify-center order-1 lg:order-2"
-            variants={fadeIn}
+            variants={imageVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
+            style={{ rotateX, rotateY, perspective: 1000 }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
           >
-            <img
-              src="https://github.com/rasan178/Images/blob/master/ChatGPT_Image_Jul_7__2025__05_00_45_PM-removebg-preview.png?raw=true"
-              alt="Profile picture of Rasan Samarakkody"
-              className="profile-img"
-            />
+            <div className="profile-img-container">
+              <img
+                src="https://github.com/rasan178/Images/blob/master/ChatGPT_Image_Jul_7__2025__05_00_45_PM-removebg-preview.png?raw=true"
+                alt="Profile picture of Rasan Samarakkody"
+                className="profile-img"
+                tabIndex={0}
+                aria-label="Profile picture of Rasan Samarakkody"
+              />
+              <div className="glyph glyph-1"></div>
+              <div className="glyph glyph-2"></div>
+              <div className="glyph glyph-3"></div>
+              <div className="glyph glyph-4"></div>
+            </div>
           </motion.div>
           
           {/* Hero Card - Shows second on mobile, first on desktop */}

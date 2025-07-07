@@ -9,7 +9,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding: 6rem 0 2rem; /* Increased padding-top to clear navbar */
+  padding: 6rem 0 2rem;
 }
 
 .hero-gradient {
@@ -90,7 +90,7 @@
 
 .hero-typed {
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 20;
   font-size: 2rem;
   letter-spacing: -0.01em;
   color: #22d3ee;
@@ -158,25 +158,114 @@
   100% { opacity: 0.6; }
 }
 
+.profile-img-container {
+  position: relative;
+  width: 100%;
+  max-width: 16rem;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile-img {
   width: 100%;
   max-width: 16rem;
   height: auto;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: filter 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 1;
 }
 
 .profile-img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  filter: hue-rotate(45deg) brightness(1.1);
+  box-shadow: 0 12px 24px rgba(6, 182, 212, 0.5), 0 0 16px rgba(6, 182, 212, 0.3);
+}
+
+.profile-img::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #06b6d4, #8b5cf6, #ec4899, #06b6d4);
+  background-size: 200%;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+  animation: holographic 6s linear infinite;
+}
+
+.profile-img:hover::before {
+  opacity: 0.9;
+}
+
+.profile-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(6, 182, 212, 0.1), transparent);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.profile-img:hover::after {
+  opacity: 0.4;
+}
+
+.profile-img:focus {
+  outline: 3px solid #06b6d4;
+  outline-offset: 6px;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.7);
+}
+
+@keyframes holographic {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.glyph {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  border: 1px solid #06b6d4;
+  border-radius: 2px;
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  transform: rotate(45deg);
+}
+
+.glyph-1 { top: 5%; left: 5%; }
+.glyph-2 { top: 10%; right: 5%; }
+.glyph-3 { bottom: 5%; left: 10%; }
+.glyph-4 { bottom: 10%; right: 5%; }
+
+.profile-img:hover .glyph {
+  animation: floatGlyph 2s ease-in-out infinite;
+}
+
+@keyframes floatGlyph {
+  0% { opacity: 0; transform: translate(0, 0) rotate(45deg); }
+  50% { opacity: 0.7; transform: translate(8px, -8px) rotate(45deg); }
+  100% { opacity: 0; transform: translate(12px, -12px) rotate(45deg); }
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   #home {
-    padding: 5rem 0 2rem; /* Adjusted padding-top for navbar */
+    padding: 5rem 0 2rem;
   }
 
   .container {
@@ -195,14 +284,16 @@
     font-size: 1rem;
   }
 
-  .profile-img {
+  .profile-img-container, .profile-img {
     max-width: 14rem;
   }
+
+  .glyph { display: none; } /* Disable glyphs on smaller screens for performance */
 }
 
 @media (max-width: 768px) {
   #home {
-    padding: 4.5rem 0 2rem; /* Adjusted padding-top for navbar */
+    padding: 4.5rem 0 2rem;
   }
 
   .container {
@@ -211,7 +302,7 @@
 
   .hero-card {
     padding: 1.5rem;
-    backdrop-filter: none; /* Disable backdrop-filter for performance */
+    backdrop-filter: none;
   }
 
   .hero-heading, .hero-name {
@@ -226,18 +317,18 @@
     font-size: 0.95rem;
   }
 
-  .profile-img {
+  .profile-img-container, .profile-img {
     max-width: 12rem;
   }
 
-  .particle {
-    display: none; /* Disable particles on smaller screens for performance */
+  .particle, .glyph {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   #home {
-    padding: 4rem 0 1.5rem; /* Adjusted padding-top for navbar */
+    padding: 4rem 0 1.5rem;
   }
 
   .container {
@@ -277,7 +368,7 @@
     font-size: 0.9rem;
   }
 
-  .profile-img {
+  .profile-img-container, .profile-img {
     max-width: 10rem;
   }
 }
