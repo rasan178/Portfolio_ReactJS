@@ -159,7 +159,7 @@ function About() {
                 transition={{ delay: 1.4 }}
               >
                 <a
-                  href="/cv/rasan_samarakkody_cv.pdf"
+                  href="https://drive.google.com/uc?export=download&id=1uhePZP5te9H-hpd4E-4UlwhMS8nnzTWQ"
                   download
                   className="btn-primary inline-flex items-center"
                   aria-label="Download CV"
