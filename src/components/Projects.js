@@ -24,6 +24,33 @@ function Projects() {
       livePreview: 'https://portfolio-react-js-psi-sepia.vercel.app/',
       category: 'ui-ux',
     },
+    {
+      title: 'MERN Login with Roles',
+      description: 'A mini MERN stack solution for user authentication with role-based access control. Features secure login, registration, and role assignment for users (e.g., admin, user, manager, accountant, operator).',
+      image: 'https://static.vecteezy.com/system/resources/thumbnails/005/879/539/small_2x/cloud-computing-modern-flat-concept-for-web-banner-design-man-enters-password-and-login-to-access-cloud-storage-for-uploading-and-processing-files-illustration-with-isolated-people-scene-free-vector.jpg',
+      languages: ['MongoDB', 'Express', 'React', 'Node.js'],
+      github: 'https://github.com/rasan178/mern-login-system',
+      livePreview: '', 
+      category: 'mini',
+    },
+    {
+      title: 'MARN Login',
+      description: 'A mini MARN stack solution for user authentication. Features login and registration using MongoDB, Angular, React, and Node.js.',
+      image: 'https://img.freepik.com/free-vector/sign-page-abstract-concept-illustration_335657-3875.jpg?semt=ais_hybrid&w=740',
+      languages: ['MongoDB', 'Angular', 'React', 'Node.js'],
+      github: 'https://github.com/rasan178/Login_Register-Using-MERN-Stack',
+      livePreview: '', 
+      category: 'mini',
+    },
+    {
+      title: 'PHP Login System',
+      description: 'A simple login and registration system built with PHP, HTML, JS and CSS. Features user authentication and basic form validation.',
+      image: 'https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg?w=740',
+      languages: ['PHP', 'HTML', 'CSS', 'JavaScript'],
+      github: 'https://github.com/rasan178/Login-html-CSS-php', 
+      livePreview: '', 
+      category: 'mini',
+    },
   ];
 
   const filteredProjects = category === 'all'
@@ -72,6 +99,12 @@ function Projects() {
           onClick={() => setCategory('ui-ux')}
         >
           UI/UX Designs
+        </button>
+        <button
+          className={`toggle-btn ${category === 'mini' ? 'active' : ''}`}
+          onClick={() => setCategory('mini')}
+        >
+          Mini Solutions
         </button>
       </div>
       <motion.div
